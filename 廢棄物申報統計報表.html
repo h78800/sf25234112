@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廢棄物申報統計</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container {
+            margin: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .report-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px 0;
+            display: none; /* 初始時，所有報表都隱藏 */
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        .active {
+            display: block; /* 只有當前頁面的報表顯示 */
+        }
+    </style>
+</head>
+<body>
+    <h1>廢棄物申報統計報表</h1>
+
+    <div class="button-container">
+        <button onclick="showReport('report1')">再利用類</button>
+        <button onclick="showReport('report2')">感染性類</button>
+    </div>
+
+    <!-- 第一個報表-再利用 -->
+    <div id="report1" class="report-container active">
+        <!--
+        <h2>報表 1 - 再利用</h2>
+        -->
+        <iframe src="https://lookerstudio.google.com/embed/reporting/76649aec-9282-44aa-9411-5b09f1f5d20a/page/ddSCE" 
+        frameborder="0" 
+        allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+        </iframe>   
+    </div>
+
+    <!-- 第二個報表-感染廢棄物 -->
+    <div id="report2" class="report-container">
+        <!--
+        <h2>報表 2 - 感染廢棄物</h2>   
+        -->
+        
+        <iframe src="https://lookerstudio.google.com/embed/reporting/896fcece-525b-4efe-b801-9d50483a2d19/page/cz3BE" 
+        frameborder="0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+        </iframe> 
+    </div>
+
+    <script>
+        function showReport(reportId) {
+            // 隱藏所有報表
+            document.querySelectorAll('.report-container').forEach(function(report) {
+                report.classList.remove('active');
+            });
+            // 顯示選中的報表
+            document.getElementById(reportId).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
+
+<!--
+    說明：
+1.按鈕切換報表：
+新增了兩個按鈕，分別用於顯示「報表 1」和「報表 2」。
+當使用者點擊按鈕時，JavaScript 函數 showReport() 會觸發，隱藏當前顯示的報表，並顯示所選的報表。
+
+2.報表容器：
+每個報表都放在一個 div 裡，並設置 class="report-container"。
+只有當前選擇的報表會被賦予 class="active"，使其顯示，其他報表則會被隱藏。
+
+3.CSS 樣式：
+透過 display: none 隱藏報表，只有被選中的報表透過 display: block 顯示。
+active class 用於控制哪個報表是當前顯示的。
+
+4.功能：
+這樣的頁面能夠通過按鈕動態切換兩個 Looker Studio 報表的顯示，實現分頁顯示的效果。
+-->

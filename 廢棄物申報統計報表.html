@@ -25,25 +25,26 @@
             font-size: 16px;
             cursor: pointer;
         }
-        .report-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px 0;
-            display: none; /* 初始時，所有報表都隱藏 */
+        .report-container {   
+            width: 100%;        /*報表容器的寬度設為 100%，以適應不同大小的螢幕。*/
+            max-width: 1200px;  /*容器最大寬度為 1200 像素，避免在寬螢幕下顯得過於寬大。*/
+            margin: 20px 0;     /*（上邊和下邊的空間）為 20 像素，（左邊和右邊的空間）為 0 像素。。*/
+            display: none;     /* 報表容器初始設置為隱藏（none），只有點擊相應按鈕或事件觸發後才會顯示。 */
         }
         iframe {
-            width: 100%;
-            height: 900px;
-            border: none;
+            width: 100%;     /*內嵌的 iframe 元素（用於嵌入報表）的寬度設置為 100%，以適應容器的寬度。*/
+            height: 1000px;   /*高度設置為 1000 像素。*/
+            border: none;    /*移除 iframe 的邊框，使其看起來更加簡潔。*/
         }
         .active {
-            display: block; /* 只有當前頁面的報表顯示 */
+            display: block;     /* 只有當前頁面的報表顯示 */
         }
     </style>
 </head>
 <body>
+    <!--
     <h1>廢棄物申報統計報表</h1>
-
+    -->
     <div class="button-container">
         <button onclick="showReport('report1')">再利用類</button>
         <button onclick="showReport('report2')">感染性類</button>
